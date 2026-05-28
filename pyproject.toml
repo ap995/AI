@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sec-ur"
+version = "0.1.0"
+description = "SecUR: Security Unified Retriever-Generator — end-to-end cybersecurity RAG model"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "datasets>=2.12.0",
+    "tokenizers>=0.13.0",
+    "sentencepiece>=0.1.99",
+    "fastapi>=0.100.0",
+    "uvicorn[standard]",
+    "qdrant-client>=1.5.0",
+    "pydantic>=2.0.0",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "httpx>=0.24.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml",
+    "aiofiles>=23.0.0",
+    "python-multipart>=0.0.6",
+    "tqdm>=4.65.0",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+]
+train = [
+    "accelerate>=0.21.0",
+    "wandb>=0.15.0",
+    "gradio>=3.40.0",
+    "sentence-transformers>=2.2.0",
+]
+
+[project.scripts]
+sec-ur = "sec_ur.cli:main"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
